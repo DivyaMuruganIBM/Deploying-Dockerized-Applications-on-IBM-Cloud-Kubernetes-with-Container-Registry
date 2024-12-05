@@ -14,9 +14,11 @@ spec:
       labels:
         app: front-service
     spec:
+      imagePullSecrets:
+        - name: ibm-cloud-secret # Image pull secret added here
       containers:
       - name: front-service
-        image: [FRONT-SERVICE-IMAGE-PUSH-LOCATION]
+        image: icr.io/cloud-namespace123/front-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -33,7 +35,7 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 2
-          failureThreshold: 1 
+          failureThreshold: 1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,9 +53,11 @@ spec:
       labels:
         app: backend-service
     spec:
+      imagePullSecrets:
+        - name: ibm-cloud-secret # Image pull secret added here
       containers:
       - name: backend-service
-        image: [BACKEND-SERVICE-IMAGE-PUSH-LOCATION]
+        image: icr.io/cloud-namespace123/backend-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -87,3 +91,4 @@ spec:
     - port: 8080
       targetPort: 8080
       name: http
+ 
