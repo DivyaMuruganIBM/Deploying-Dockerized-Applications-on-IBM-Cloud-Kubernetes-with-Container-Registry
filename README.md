@@ -1,40 +1,35 @@
-# Deploying Dockerized Applications on IBM Cloud Kubernetes with Container Registry
+# Deploying Dockerized Applications on IBM Cloud Kubernetes  
 
-## Prepared by Divya Murugan
+This project demonstrates how to deploy Dockerized applications on IBM Cloud Kubernetes using IBM Cloud Container Registry. The setup includes building, pushing, and deploying Docker images for frontend and backend services.  
 
-### Accessing IBM Cloud Container Registry
+## Overview  
 
-1. **Log in to IBM Cloud Dashboard:**
-   - Visit the [IBM Cloud Dashboard](https://cloud.ibm.com/) and log in with your IBM Cloud credentials.
+- **Container Registry**: Used to store and manage container images.  
+- **Kubernetes**: Orchestrates and deploys the services in a cluster environment.  
+- **Frontend and Backend Services**: Both services are built as Docker images and deployed as Kubernetes deployments.  
 
-2. **Navigate to Container Registry:**
-   - In the IBM Cloud Dashboard, click on the **Menu** (three horizontal lines in the top-left corner).
-   - Under the "Catalog" section, search for **Container Registry**.
-   - Click on **Container Registry** in the results.
+## Key Steps  
 
-### Creating a Namespace in IBM Cloud Container Registry
+### 1. Access IBM Cloud Container Registry  
+- Log in to IBM Cloud.  
+- Navigate to Container Registry in the IBM Cloud Dashboard.  
+- Create a namespace to organize container images.  
 
-1. **Go to "Namespaces":**
-   - In the IBM Cloud Container Registry dashboard, click the **Namespaces** tab to manage your namespaces.
+### 2. Build and Push Docker Images  
+- Build Docker images for frontend and backend services.  
+- Push the images to IBM Cloud Container Registry.  
 
-2. **Create a Namespace:**
-   - Click **Create Namespace**.
-   - Enter a name for your namespace (it should follow the rules mentioned earlier, e.g., lowercase letters, numbers, and hyphens).
-   - Click **Create** to create your namespace.
+### 3. Deploy to Kubernetes  
+- Use Kubernetes `kubectl` commands to deploy services.  
+- Ensure `imagePullSecrets` are configured for private registries.  
 
-#### Example Valid Namespace Names:
-- my-container
-- dev-apps
-- project-registry
-- cloud-namespace01
-- web-images
+### 4. Verify and Access Services  
+- Check the status of deployments, pods, and services using `kubectl`.  
+- Access the services through exposed NodePorts or LoadBalancer IPs.  
 
-Once your namespace is created, you can start using it to organize your container images within the IBM Cloud Container Registry.
+## Summary of Commands  
 
-### Step 1: Log in to IBM Cloud
-
-1. **Log in using your API key:**
-   If you haven't logged in yet, use the following command. Replace `<your-api-key>` with your actual IBM Cloud API key:
-
-   ```bash
-   ibmcloud login --apikey <your-api-key>
+### IBM Cloud Commands  
+- Log in to IBM Cloud:  
+  ```bash
+  ibmcloud login --apikey <your-api-key>
